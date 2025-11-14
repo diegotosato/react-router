@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { NavLink } from "react-router-dom"
 
 export default function Products() {
     const productsEndpoint = 'https://fakestoreapi.com/products'
@@ -17,8 +18,28 @@ export default function Products() {
 
     return (
         <>
-            <h1>Prodotti</h1>
 
+
+            <nav className="navbar navbar-expand-sm navbar-light bg-light">
+                <div className="container">
+                    <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to={'/'}>Home Page</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to={'/products'}>Products</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to={'/about_us'}>About Us</NavLink>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </nav>
+
+            <h1>Prodotti</h1>
             <div className="container">
 
                 <div className="row row-cols-4 g-3">
