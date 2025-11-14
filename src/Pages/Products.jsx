@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import Header from "../Components/Header"
+import Footer from "../Components/Footer"
 
 export default function Products() {
     const productsEndpoint = 'https://fakestoreapi.com/products'
@@ -21,9 +22,9 @@ export default function Products() {
 
             <Header />
 
-
-            <h1>Prodotti</h1>
             <div className="container">
+
+                <h1 className="my-4">Prodotti</h1>
 
                 <div className="row row-cols-4 g-3">
 
@@ -56,6 +57,7 @@ export default function Products() {
 
             </div>
 
+            <Footer />
         </>
     )
 }

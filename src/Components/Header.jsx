@@ -1,22 +1,41 @@
 import { NavLink } from "react-router-dom"
 
 export default function Header() {
+
+    const menu = [
+        {
+            id: 1,
+            link: '/',
+            text: 'Home Page'
+        },
+        {
+            id: 2,
+            link: '/products',
+            text: 'Products'
+        },
+        {
+            id: 3,
+            link: '/about_us',
+            text: 'About Us'
+        }
+    ]
+
+
     return (
         <>
             <header>
-                <nav className="navbar navbar-expand-sm navbar-light bg-light">
+                <nav className="navbar navbar-expand-sm navbar-light bg-primary" data-bs-theme="dark">
                     <div className="container">
-                        <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+                        <ul className="navbar-nav me-auto ">
 
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={'/'}>Home Page</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={'/products'}>Products</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={'/about_us'}>About Us</NavLink>
-                            </li>
+                            {
+                                menu.map(item => (
+                                    <li key={item.id} className="nav-item">
+                                        <NavLink className="nav-link" to={item.link}>{item.text}</NavLink>
+                                    </li>
+                                ))
+                            }
+
                         </ul>
                     </div>
                 </nav>
