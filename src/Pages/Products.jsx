@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import Card from '../Components/Card'
 
 export default function Products() {
     const productsEndpoint = 'https://fakestoreapi.com/products'
@@ -25,26 +26,9 @@ export default function Products() {
                 <div className="row row-cols-4 g-3">
 
                     {
-                        products.map(product => (
-                            <div key={product.id} className="col">
-                                <div className="card h-100">
-
-                                    <div className="card-image">
-                                        <img className="card-img-top" src={product.image} alt={product.title} />
-                                    </div>
-
-                                    <div className="card-body">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">{product.category}</h6>
-                                        <p className="card-text">{product.description}</p>
-                                        <h5 className="card-title">€ {product.price}</h5>
-                                        <p className="card-text">
-                                            <span>Rating: {product.rating.rate}</span>
-                                            <span>Count: {product.rating.count}</span>
-                                        </p>
-                                    </div>
-
-                                </div>
+                        products.map((product, index) => (
+                            <div key={index} className="col">
+                                <Card product={product} />
                             </div>
                         ))
                     }
