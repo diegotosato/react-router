@@ -7,9 +7,13 @@ function App() {
 
   return (
     <>
-      <HomePage />
-      <Products />
-      <AboutUs />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/about_us" element={<AboutUs />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
