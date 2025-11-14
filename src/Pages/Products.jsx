@@ -18,26 +18,30 @@ export default function Products() {
     return (
         <>
             <h1>Prodotti</h1>
+            {
+                products.map(product => (
+                    <div key={product.id} className="card">
+
+                        <div className="card-image">
+                            <img src={product.image} alt={product.title} />
+                        </div>
+
+                        <div className="card-body">
+                            <h5 className="card-title">{product.title}</h5>
+                            <h6 className="card-subtitle mb-2 text-body-secondary">{product.category}</h6>
+                            <p className="card-text">{product.description}</p>
+                            <h5 className="card-title">€ {product.price}</h5>
+                            <p className="card-text">
+                                <span>Rating: {product.rating.rate}</span>
+                                <span>Count: {product.rating.count}</span>
+                            </p>
+                        </div>
+
+                    </div>
+                ))
+            }
 
 
-            <div className="card">
-                <div className="card-image">
-                    <img src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png' alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" />
-                </div>
-                <div className="card-body">
-                    <h5 className="card-title">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">men's clothing</h6>
-                    <p className="card-text">
-                        Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
-                    </p>
-                    <h5 className="card-title">€ 109.95</h5>
-                    <p className="card-text">
-                        Rating: 3.9
-                        Count: 120
-                    </p>
-
-                </div>
-            </div>
         </>
     )
 }
