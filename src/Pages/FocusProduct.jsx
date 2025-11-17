@@ -11,8 +11,6 @@ export default function FocusProduct() {
     const [product, setProduct] = useState({ rating: {} })
     const [isLoading, setIsLoading] = useState(true)
 
-    const back = Number(id) - 1
-    const forward = Number(id) + 1
 
     function handleGet() {
         axios.get(`https://fakestoreapi.com/products/${id}`)
