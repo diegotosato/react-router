@@ -18,6 +18,8 @@ export default function Products() {
             .then(res => {
                 setIsLoading(true)
                 setProducts(res.data)
+                console.log(res.data);
+
             })
             .catch(err => {
                 navigate('/error_page')
@@ -33,7 +35,6 @@ export default function Products() {
     }
 
     useEffect(handleGet, [])
-    console.log(products);
 
 
     return (

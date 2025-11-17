@@ -11,6 +11,8 @@ export default function FocusProduct() {
     const [product, setProduct] = useState({ rating: {} })
     const [isLoading, setIsLoading] = useState(true)
 
+    const back = Number(id) - 1
+    const forward = Number(id) + 1
 
     function handleGet() {
         axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -35,7 +37,6 @@ export default function FocusProduct() {
     }
 
     useEffect(handleGet, [id])
-    console.log(product.rating);
 
 
     return (
@@ -65,6 +66,8 @@ export default function FocusProduct() {
                                 <p className="card-text">Rating: <span className="text-warning fw-bold">{product.rating.rate}</span></p>
                                 <p className="card-text">Count: <span className="text-warning fw-bold">{product.rating.count}</span></p>
                                 <Link to='/products' className="btn btn-primary w-50">Torna alla pagina dei prodotti</Link>
+                                <Link to={`/products/${back}`} className="btn btn-dark w-50 my-3">Prodotto precedente</Link>
+                                <Link to={`/products/${forward}`} className="btn btn-dark w-50">Prodotto successivo</Link>
                             </div>
                         </div>
                     </div>
