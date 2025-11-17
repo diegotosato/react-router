@@ -6,7 +6,7 @@ export default function FocusProduct() {
 
     const { id } = useParams()
     const navigate = useNavigate()
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({ rating: {} })
 
     function handleGet() {
         axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -18,6 +18,11 @@ export default function FocusProduct() {
             })
             .catch(err => {
                 navigate('/products')
+
+                if (err.status === 404) {
+                    navigate('/error_page')
+
+                }
             })
     }
 
@@ -42,8 +47,8 @@ export default function FocusProduct() {
                                 <h6 className="card-subtitle mb-2 text-body-secondary fs-3">{product.category}</h6>
                                 <p className="card-text">{product.description}</p>
                                 <h5 className="card-title text-success fs-3">€ {product.price}</h5>
-                                <p className="card-text">Rating: <span className="text-warning fw-bold">{product?.rating?.rate}</span></p>
-                                <p className="card-text">Count: <span className="text-warning fw-bold">{product?.rating?.count}</span></p>
+                                <p className="card-text">Rating: <span className="text-warning fw-bold">{product.rating.rate}</span></p>
+                                <p className="card-text">Count: <span className="text-warning fw-bold">{product.rating.count}</span></p>
                                 <Link to='/products' className="btn btn-primary w-50">Torna alla pagina dei prodotti</Link>
                             </div>
                         </div>

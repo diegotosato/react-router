@@ -12,9 +12,16 @@ export default function Products() {
 
     function handleGet() {
         axios.get(productsEndpoint)
-            .then(res => setProducts(res.data))
+            .then(res => {
+                setProducts(res.data)
+            })
             .catch(err => {
                 navigate('/error_page')
+
+                if (err.status === 404) {
+                    navigate('/error_page')
+
+                }
             })
     }
 
