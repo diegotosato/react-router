@@ -23,7 +23,7 @@ export default function Products() {
 
                 <h1 className="my-4">Prodotti</h1>
 
-                <div className="row row-cols-4 g-3">
+                <div className="row row-cols-1 row-cols-sm-1 row-cols-xl-2 g-5">
 
                     {
                         products.map((product, index) => (
