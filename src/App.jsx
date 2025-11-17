@@ -4,6 +4,7 @@ import Products from './Pages/Products'
 import AboutUs from './Pages/AboutUs'
 import DefaultLayout from "./Layout/DefaultLayout"
 import FocusProduct from "./Pages/FocusProduct"
+import ErrorPage from "./Pages/ErrorPage"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/about_us" element={<AboutUs />} />
 
           </Route>
+          <Route path="/error_page" element={<ErrorPage />} />
 
         </Routes>
 

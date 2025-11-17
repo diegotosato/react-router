@@ -1,15 +1,21 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import Card from '../Components/Card'
+import { useNavigate } from "react-router-dom"
 
 export default function Products() {
     const productsEndpoint = 'https://fakestoreapi.com/products'
 
     const [products, setProducts] = useState([])
 
+    const navigate = useNavigate()
+
     function handleGet() {
         axios.get(productsEndpoint)
             .then(res => setProducts(res.data))
+            .catch(err => {
+                navigate('/error_page')
+            })
     }
 
     useEffect(handleGet, [])
