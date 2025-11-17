@@ -1,16 +1,23 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
 export default function FocusProduct() {
 
     const { id } = useParams()
-    const [product, setProduct] = useState({ rating: {} })
+    const navigate = useNavigate()
+    const [product, setProduct] = useState([])
 
     function handleGet() {
         axios.get(`https://fakestoreapi.com/products/${id}`)
             .then(res => {
                 setProduct(res.data)
+                if (res.data === '') {
+                    navigate('/products')
+                }
+            })
+            .catch(err => {
+                navigate('/products')
             })
     }
 
@@ -35,8 +42,8 @@ export default function FocusProduct() {
                                 <h6 className="card-subtitle mb-2 text-body-secondary fs-3">{product.category}</h6>
                                 <p className="card-text">{product.description}</p>
                                 <h5 className="card-title text-success fs-3">€ {product.price}</h5>
-                                <p className="card-text">Rating: <span className="text-warning fw-bold">{product.rating.rate}</span></p>
-                                <p className="card-text">Count: <span className="text-warning fw-bold">{product.rating.count}</span></p>
+                                <p className="card-text">Rating: <span className="text-warning fw-bold">{product?.rating?.rate}</span></p>
+                                <p className="card-text">Count: <span className="text-warning fw-bold">{product?.rating?.count}</span></p>
                                 <Link to='/products' className="btn btn-primary w-50">Torna alla pagina dei prodotti</Link>
                             </div>
                         </div>
