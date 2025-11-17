@@ -45,7 +45,7 @@ export default function Products() {
 
                 {
                     (isLoading === true) &&
-                    <div className="d-flex justify-content-center vh-100">
+                    <div className="d-flex justify-content-center vh-100 mt-5">
                         <Ring size="40" stroke="5" bgOpacity="0" speed="2" color="black" className="mx-auto" />
                     </div>
                 }

@@ -6,10 +6,16 @@ import 'ldrs/react/Ring.css'
 
 export default function FocusProduct() {
 
-    const { id } = useParams()
+    let { id } = useParams()
+
     const navigate = useNavigate()
+
     const [product, setProduct] = useState({ rating: {} })
     const [isLoading, setIsLoading] = useState(true)
+
+    const back = Number(id) - 1
+    const forward = Number(id) + 1
+
 
 
     function handleGet() {
