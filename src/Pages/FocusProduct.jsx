@@ -1,16 +1,21 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { Ring } from 'ldrs/react'
+import 'ldrs/react/Ring.css'
 
 export default function FocusProduct() {
 
     const { id } = useParams()
     const navigate = useNavigate()
     const [product, setProduct] = useState({ rating: {} })
+    const [isLoading, setIsLoading] = useState(true)
+
 
     function handleGet() {
         axios.get(`https://fakestoreapi.com/products/${id}`)
             .then(res => {
+                setIsLoading(true)
                 setProduct(res.data)
                 if (res.data === '') {
                     navigate('/products')
@@ -24,6 +29,9 @@ export default function FocusProduct() {
 
                 }
             })
+            .finally(onfinally => {
+                setIsLoading(false)
+            })
     }
 
     useEffect(handleGet, [id])
@@ -33,6 +41,13 @@ export default function FocusProduct() {
     return (
         <>
             <div className="container">
+
+                {
+                    (isLoading === true) &&
+                    <div className="d-flex justify-content-center vh-100">
+                        <Ring size="40" stroke="5" bgOpacity="0" speed="2" color="black" className="mx-auto" />
+                    </div>
+                }
 
                 <h1 className="my-4">{product.title}</h1>
 
